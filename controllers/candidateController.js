@@ -15,7 +15,8 @@ exports.register = function(req, res) {
 
 exports.registerUser = function(req, res) {
   console.log(req.body);
-  var candidateObj = Candidate(req.body);
+  var candidateObj = new Candidate(req.body);
   console.log(candidateObj.user_name);
-  //res.send(edge.render('register'));
+  candidateObj.save()
+  res.send(edge.render('register'));
 };
