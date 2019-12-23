@@ -11,7 +11,11 @@ var knex = require("knex")({
 
 
   module.exports.Candidate = class Candidate {
-  constructor(obj,cvPath=null) {
+  constructor() {
+  }
+
+  create(obj,cvPath)
+  {
     this.user_name = obj.user_name;
     this.password = obj.password;
     this.email = obj.email;
@@ -19,6 +23,14 @@ var knex = require("knex")({
     this.cv='/files/'+cvPath
   }
 
+  fill(obj){
+      this.id=obj.id
+    this.user_name = obj.user_name;
+    this.password = obj.password;
+    this.email = obj.email;
+    this.telephone = obj.telephone;
+    this.cv=obj.cv
+  }
   save() {
     return knex("candidates").insert([{
       user_name: this.user_name,
@@ -32,4 +44,29 @@ var knex = require("knex")({
         knex.destroy();
     });
   }
+
+  all()
+  {
+        return knex.select().table('candidates')
+  }
+  where(obj)
+  {
+      var self=this
+      knex('candidates').where(obj).first().select()
+     .then(function(data){
+        self.user_name=data.user_name
+        self.password=data.password
+        self.telephone=data.telephone
+        self.cv=data.cv
+        self.email=data.email
+        self.id=data.id
+     })
+    .catch((err) => { console.log(err); throw err })
+    .finally(() => {
+        knex.destroy();
+    });
+    this.fill(self)
+
+  }
+
 };

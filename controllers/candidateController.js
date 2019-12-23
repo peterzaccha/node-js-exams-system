@@ -17,19 +17,22 @@ exports.register = function(req, res) {
 };
 
 exports.registerUser = function(req, res) {
-
   var form = new formidable.IncomingForm();
   form.parse(req, function (err, fields, files) {
     var oldpath = files.cv.path;
       var newpath = './public/files/' + files.cv.name;
       fs.rename(oldpath, newpath, function (err) {
-        console.log(newpath)
-        console.log(fields)
-        req.body.cv=files.cv.name
-        var candidateObj = new Candidate(fields,files.cv.name);
+        var candidateObj = new Candidate();
+        candidateObj.create(fields,files.cv.name)
         candidateObj.save()
       });
   });
-  
   res.redirect('/login');
+};
+
+
+exports.loginUser = function(req, res) {
+  var candidateObj = new Candidate();
+  candidateObj.where(req.body)
+  console.log(candidateObj.id)
 };
