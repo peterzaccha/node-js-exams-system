@@ -1,6 +1,6 @@
 const path = require("path");
 const edge = require("edge.js");
-const Candidate = require("../models/canidate");
+const { Candidate } = require("../models/canidate");
 exports.index = function(req, res) {
   res.render("index", { name: "John" });
 };
