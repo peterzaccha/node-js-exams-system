@@ -11,6 +11,10 @@ export default class Candidate{
 
     save()
     {
-       return knex('users').insert({user_name: this.user_name,email:this.email,password:this.password,telephone:this.telephone})
+       return knex('users').insert({
+        user_name: this.user_name,
+        email:this.email,
+        password:this.password,
+        telephone:this.telephone})
     }
 }
