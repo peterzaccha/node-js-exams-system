@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var candidate = require("./candidate");
 var candidateController = require("../controllers/candidateController");
 
 router.get("/", function(req, res) {
@@ -8,6 +7,7 @@ router.get("/", function(req, res) {
 });
 router.get("/login", candidateController.login);
 router.get("/register", candidateController.register);
+router.post("/registerUser", candidateController.registerUser);
 router.use("candidate", candidate);
 
 module.exports = router;

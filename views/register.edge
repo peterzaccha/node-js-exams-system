@@ -22,25 +22,33 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <h4 class="text-center mb-4">Sign up your account</h4>
-                                    <form action="index.html">
+                                    <form action="/registerUser" method="post">
                                         <div class="form-group">
                                             <label><strong>Username</strong></label>
-                                            <input type="text" class="form-control" placeholder="username">
+                                            <input type="text" class="form-control" placeholder="username" name="user_name">
+                                        </div>
+                                         <div class="form-group">
+                                            <label><strong>Telephone</strong></label>
+                                            <input type="text" class="form-control" placeholder="Telephone" name="telephone">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Email</strong></label>
-                                            <input type="email" class="form-control" placeholder="hello@example.com">
+                                            <input type="email" class="form-control" placeholder="email" name="email">
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <input type="password" class="form-control" name="password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Cv</strong></label>
+                                            <input type="file" class="form-control"  name="cv">
                                         </div>
                                         <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
+                                            <input type=submit class="btn btn-primary btn-block" />
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Already have an account? <a class="text-primary" href="page-login.html">Sign in</a></p>
+                                        <p>Already have an account? <a class="text-primary" href="/login">Sign in</a></p>
                                     </div>
                                 </div>
                             </div>
